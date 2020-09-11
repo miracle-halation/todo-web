@@ -1,7 +1,7 @@
 <template>
   <div>
-    <AddTodo />
-    <TodoList />
+    <AddTodo @submit="addTodo" />
+    <TodoList :todos="todos" />
   </div>
 </template>
 
@@ -17,6 +17,13 @@ export default {
   data(){
     return{
       todos:[]
+    }
+  },
+  methods:{
+    addTodo(title){
+      this.todos.push({
+        title
+      });
     }
   }
 }

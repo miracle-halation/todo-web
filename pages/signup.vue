@@ -29,8 +29,11 @@
     </v-col>
   </v-row>
 </template>
+
 <script>
 import firebase from "@/plugins/firebase";
+import axios from "@/plugins/axios";
+
 export default {
   data() {
     return {
@@ -52,7 +55,14 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(res => {
-          console.log(res.user);
+          const user = {
+            email: res.user.email,
+            name: this.name,
+            uid: res.user.uid
+          };
+          axios.post("/v1/users",{ user }).then(() => {
+            this.$router.push("/");
+          });
         })
         .catch(error => {
           this.error = (code => {

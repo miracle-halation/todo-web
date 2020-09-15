@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-if="user">
-			<p>Enail: {{user.email}}</p>
+			<p>Email: {{user.email}}</p>
 			<p>ユーザー名{{user.name}}</p>
 		</div>
 		<v-btn @click="logOut">ログアウト</v-btn>

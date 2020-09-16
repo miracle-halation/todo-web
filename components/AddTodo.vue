@@ -20,6 +20,11 @@
 				title: ""
 			}
 		},
+		computed:{
+			user(){
+				return this.$store.state.currentUser
+			}
+		},
 		methods:{
 			handleSubmit(){
 				const todo = {

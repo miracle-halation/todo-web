@@ -2,7 +2,7 @@
   <div v-if="user">
     <p>{{user.name}}</p>
     <AddTodo @submit="addTodo" />
-    <TodoList :todos="todos" />
+    <TodoList :todos="user.todos" />
   </div>
 </template>
 
@@ -33,6 +33,13 @@ export default {
         ...this.user,
         todos: [...this.user.todos, data]
       });
+      this.$store.commit("setNotice",{
+				status: true,
+				message: "Todoを作成しました"
+			});
+			setTimeout(() => {
+				this.$store.commit("setNotice", {});
+      }, 2000);
     }
   }
 };

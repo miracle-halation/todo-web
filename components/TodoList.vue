@@ -7,7 +7,7 @@
 		</v-card-title>
 		<v-data-table :headers="headers" :items="todos" :search="search">
 			<template v-slot:item.action="{ item }">
-				<v-icon small @click="deleteItem(item)"></v-icon>
+				<v-icon small @click="deleteItem(item)">delete</v-icon>
 			</template>
 		</v-data-table>
 	</v-card>
@@ -54,6 +54,13 @@
 					};
 					this.$store.commit("setUser", newUser);
 				}
+				this.$store.commit("setNotice",{
+					status: true,
+					message: "削除しました"
+				});
+				setTimeout(() => {
+					this.$store.commit("setNotice", {});
+        }, 2000);
 			}
 		}
 	};

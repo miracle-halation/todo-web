@@ -64,8 +64,15 @@ export default {
           axios.post("/v1/users",{ user }).then( res => {
             this.$store.commit("setLoading", false);
             this.$store.commit("setUser", res.data);
-            this.$router.push("/");
           });
+          this.$store.commit("setNotice",{
+							status: true,
+							message: "新規作成しました"
+						});
+						setTimeout(() => {
+							this.$store.commit("setNotice", {});
+            }, 2000);
+            this.$router.push("/");
         })
         .catch(error => {
           this.error = (code => {

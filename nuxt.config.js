@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config();
 
 export default {
   /*
@@ -37,7 +38,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    "@/plugins/vuetify"
+    "@/plugins/vuetify",
+    "@/plugins/auth-check"
   ],
   /*
   ** Auto import components
@@ -49,6 +51,7 @@ export default {
   */
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
   /*
   ** Nuxt.js modules
